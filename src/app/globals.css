@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #07111F;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #07111F;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00FF85;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00BFFF;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-dark {
+    background: rgba(7, 17, 31, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 255, 133, 0.1);
+  }
+
+  .neon-text-green {
+    color: #00FF85;
+    text-shadow: 0 0 10px rgba(0, 255, 133, 0.6),
+                 0 0 30px rgba(0, 255, 133, 0.3);
+  }
+
+  .neon-text-blue {
+    color: #00BFFF;
+    text-shadow: 0 0 10px rgba(0, 191, 255, 0.6),
+                 0 0 30px rgba(0, 191, 255, 0.3);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300
+           bg-accentGreen text-bgPrimary hover:shadow-neon-green hover:scale-105
+           active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 rounded-full font-semibold text-sm transition-all duration-300
+           border border-accentBlue text-accentBlue hover:bg-accentBlue hover:text-bgPrimary
+           hover:shadow-neon-blue active:scale-95;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-display tracking-wider text-textWhite;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-card;
+  }
+}
+
+/* Swiper Custom Styles */
+.swiper-pagination-bullet {
+  background: #94A3B8 !important;
+  opacity: 0.5 !important;
+  width: 8px !important;
+  height: 8px !important;
+}
+.swiper-pagination-bullet-active {
+  background: #00FF85 !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+}
+
+/* Ticker animation */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.ticker-content {
+  display: inline-block;
+  animation: ticker 40s linear infinite;
+}

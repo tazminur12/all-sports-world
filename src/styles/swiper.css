@@ -1,0 +1,171 @@
+/* ═══════════════════════════════════════════════
+   ALL SPORTS WORLD — Custom Swiper Styles
+   (No @import here — CSS imported in components)
+   ═══════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════
+   PAGINATION DOTS
+══════════════════════════════════════════════ */
+
+.swiper-pagination {
+    position: relative !important;
+    margin-top: 20px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+  
+  .swiper-pagination-bullet {
+    width: 8px !important;
+    height: 8px !important;
+    background: #94A3B8 !important;
+    opacity: 0.4 !important;
+    border-radius: 99px !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer;
+  }
+  
+  .swiper-pagination-bullet:hover {
+    opacity: 0.7 !important;
+    background: #ffffff !important;
+  }
+  
+  .swiper-pagination-bullet-active {
+    width: 28px !important;
+    height: 8px !important;
+    background: #00FF85 !important;
+    opacity: 1 !important;
+    border-radius: 99px !important;
+    box-shadow: 0 0 10px rgba(0, 255, 133, 0.5) !important;
+  }
+  
+  /* ══════════════════════════════════════════════
+     NAVIGATION ARROWS
+  ══════════════════════════════════════════════ */
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 44px !important;
+    height: 44px !important;
+    background: rgba(15, 23, 42, 0.85) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 50% !important;
+    color: #94A3B8 !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .swiper-button-next:hover,
+  .swiper-button-prev:hover {
+    color: #00FF85 !important;
+    border-color: rgba(0, 255, 133, 0.4) !important;
+    box-shadow: 0 0 16px rgba(0, 255, 133, 0.25) !important;
+  }
+  
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 14px !important;
+    font-weight: 900 !important;
+  }
+  
+  .swiper-button-disabled {
+    opacity: 0.25 !important;
+    pointer-events: none !important;
+  }
+  
+  /* ══════════════════════════════════════════════
+     SCROLLBAR
+  ══════════════════════════════════════════════ */
+  
+  .swiper-scrollbar {
+    background: rgba(255, 255, 255, 0.05) !important;
+    height: 3px !important;
+    border-radius: 99px !important;
+    margin-top: 16px !important;
+  }
+  
+  .swiper-scrollbar-drag {
+    background: #00FF85 !important;
+    border-radius: 99px !important;
+    cursor: grab !important;
+  }
+  
+  .swiper-scrollbar-drag:hover {
+    background: #00BFFF !important;
+  }
+  
+  .swiper-scrollbar-drag:active {
+    cursor: grabbing !important;
+  }
+  
+  /* ══════════════════════════════════════════════
+     GRAB CURSOR
+  ══════════════════════════════════════════════ */
+  
+  .swiper-free-mode {
+    cursor: grab;
+  }
+  
+  .swiper-free-mode:active {
+    cursor: grabbing;
+  }
+  
+  /* ══════════════════════════════════════════════
+     SLIDE OPACITY
+  ══════════════════════════════════════════════ */
+  
+  .swiper-slide {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .swiper-no-fade .swiper-slide,
+  .matches-swiper  .swiper-slide,
+  .teams-swiper    .swiper-slide,
+  .reels-swiper    .swiper-slide {
+    opacity: 1 !important;
+    height: auto !important;
+  }
+  
+  /* ══════════════════════════════════════════════
+     SECTION-SPECIFIC
+  ══════════════════════════════════════════════ */
+  
+  .matches-swiper .swiper-pagination,
+  .teams-swiper   .swiper-pagination {
+    margin-top: 20px !important;
+  }
+  
+  .hero-swiper .swiper-pagination-bullet {
+    width: 6px !important;
+    height: 6px !important;
+    background: rgba(255, 255, 255, 0.4) !important;
+    opacity: 1 !important;
+  }
+  
+  .hero-swiper .swiper-pagination-bullet-active {
+    width: 24px !important;
+    background: #00FF85 !important;
+  }
+  
+  /* ══════════════════════════════════════════════
+     RESPONSIVE
+  ══════════════════════════════════════════════ */
+  
+  @media (max-width: 640px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: none !important;
+    }
+  
+    .swiper-pagination-bullet-active {
+      width: 20px !important;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .swiper-button-next { right: -16px !important; }
+    .swiper-button-prev { left: -16px !important;  }
+  }
+  

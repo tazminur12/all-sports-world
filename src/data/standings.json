@@ -1,0 +1,32 @@
+{
+    "groups": [
+      {
+        "group": "A",
+        "teams": [
+          { "name": "USA",      "code": "us", "flag": "https://flagcdn.com/w40/us.png", "played": 2, "won": 1, "drawn": 1, "lost": 0, "gf": 3, "ga": 1, "gd": 2,  "points": 4 },
+          { "name": "Mexico",   "code": "mx", "flag": "https://flagcdn.com/w40/mx.png", "played": 2, "won": 1, "drawn": 0, "lost": 1, "gf": 2, "ga": 2, "gd": 0,  "points": 3 },
+          { "name": "Canada",   "code": "ca", "flag": "https://flagcdn.com/w40/ca.png", "played": 2, "won": 0, "drawn": 1, "lost": 1, "gf": 1, "ga": 3, "gd": -2, "points": 1 },
+          { "name": "Bolivia",  "code": "bo", "flag": "https://flagcdn.com/w40/bo.png", "played": 2, "won": 0, "drawn": 0, "lost": 2, "gf": 0, "ga": 0, "gd": 0,  "points": 0 }
+        ]
+      },
+      {
+        "group": "B",
+        "teams": [
+          { "name": "Argentina","code": "ar", "flag": "https://flagcdn.com/w40/ar.png", "played": 2, "won": 2, "drawn": 0, "lost": 0, "gf": 5, "ga": 1, "gd": 4,  "points": 6 },
+          { "name": "Brazil",   "code": "br", "flag": "https://flagcdn.com/w40/br.png", "played": 2, "won": 1, "drawn": 1, "lost": 0, "gf": 4, "ga": 2, "gd": 2,  "points": 4 },
+          { "name": "Ecuador",  "code": "ec", "flag": "https://flagcdn.com/w40/ec.png", "played": 2, "won": 0, "drawn": 1, "lost": 1, "gf": 1, "ga": 3, "gd": -2, "points": 1 },
+          { "name": "Colombia", "code": "co", "flag": "https://flagcdn.com/w40/co.png", "played": 2, "won": 0, "drawn": 0, "lost": 2, "gf": 1, "ga": 5, "gd": -4, "points": 0 }
+        ]
+      },
+      {
+        "group": "C",
+        "teams": [
+          { "name": "France",   "code": "fr", "flag": "https://flagcdn.com/w40/fr.png", "played": 2, "won": 2, "drawn": 0, "lost": 0, "gf": 6, "ga": 1, "gd": 5,  "points": 6 },
+          { "name": "England",  "code": "gb", "flag": "https://flagcdn.com/w40/gb.png", "played": 2, "won": 1, "drawn": 0, "lost": 1, "gf": 3, "ga": 3, "gd": 0,  "points": 3 },
+          { "name": "Senegal",  "code": "sn", "flag": "https://flagcdn.com/w40/sn.png", "played": 2, "won": 1, "drawn": 0, "lost": 1, "gf": 2, "ga": 3, "gd": -1, "points": 3 },
+          { "name": "Wales",    "code": "gb-wls", "flag": "https://flagcdn.com/w40/gb.png", "played": 2, "won": 0, "drawn": 0, "lost": 2, "gf": 1, "ga": 5, "gd": -4, "points": 0 }
+        ]
+      }
+    ]
+  }
+  

@@ -1,0 +1,9 @@
+# API-Football (RapidAPI)
+RAPIDAPI_KEY=015b71bd77msh9a65adc6508ecc3p198542jsn3bf0f6687ee4
+SPORTAPI_HOST=sportapi7.p.rapidapi.com
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+
+# TheSportsDB
+SPORTSDB_KEY=123456
+
+

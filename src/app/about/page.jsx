@@ -14,36 +14,28 @@ const STATS = [
 
 const TEAM = [
   {
-    name:   'Carlos Mendez',
-    role:   'Editor in Chief',
-    flag:   'ar',
-    bio:    'Former sports journalist with 15 years covering FIFA tournaments worldwide.',
-    avatar: 'C',
+    name:   'Tazminur Rahman Tanim',
+    role:   'Founder and developer — this website',
+    flag:   'bd',
+    bio:    'Leads product and engineering, turning the vision for All Sports World into a fast, reliable platform for fans.',
+    avatar: 'T',
     color:  '#00FF85',
   },
   {
-    name:   'Sarah Collins',
-    role:   'Head of Design',
-    flag:   'us',
-    bio:    'Award-winning UI designer passionate about sports media and visual storytelling.',
+    name:   'Moynul Hasan Sadik',
+    role:   'Professional designer and Video Editor',
+    flag:   'bd',
+    bio:    'Shapes the look and feel of our brand and crafts video content that brings matches and stories to life.',
+    avatar: 'M',
+    color:  '#00BFFF',
+  },
+  {
+    name:   'Sakib Al Hasan',
+    role:   'Social Media Manager and Website Maintenance',
+    flag:   'bd',
+    bio:    'Keeps our community engaged across channels and ensures the site stays up to date and running smoothly.',
     avatar: 'S',
-    color:  '#00BFFF',
-  },
-  {
-    name:   'Yuki Tanaka',
-    role:   'Asia Correspondent',
-    flag:   'jp',
-    bio:    'Based in Tokyo, covering Asian football and World Cup qualification campaigns.',
-    avatar: 'Y',
     color:  '#00FF85',
-  },
-  {
-    name:   'Pierre Dupont',
-    role:   'Tactical Analyst',
-    flag:   'fr',
-    bio:    'Former UEFA licensed coach turned analyst. Breaks down tactics for the modern fan.',
-    avatar: 'P',
-    color:  '#00BFFF',
   },
 ];
 
@@ -231,7 +223,7 @@ export default function AboutPage() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TEAM.map(({ name, role, flag, bio, avatar, color }, i) => (
             <motion.div
               key={name}

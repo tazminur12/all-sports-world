@@ -1,25 +1,23 @@
 import { NextResponse } from 'next/server';
-
-const BASE_URL = 'https://sportapi7.p.rapidapi.com';
-
-const HEADERS = {
-  'X-RapidAPI-Key':  process.env.RAPIDAPI_KEY,
-  'X-RapidAPI-Host': process.env.SPORTAPI_HOST || 'sportapi7.p.rapidapi.com',
-};
+import {
+  sportApiFetch,
+  SportApiPaths,
+  sportApiUpstreamErrorResponse,
+} from '@/lib/sportApi';
 
 export async function GET(request, { params }) {
   try {
     const { eventId } = await params;
 
-    const res = await fetch(
-      `${BASE_URL}/api/v1/event/${eventId}/incidents`,
-      {
-        headers: HEADERS,
-        next: { revalidate: 20 },
-      }
-    );
+    const res = await sportApiFetch(SportApiPaths.eventIncidents(eventId), {
+      cache: 'no-store',
+    });
 
-    if (!res.ok) throw new Error(`Incidents API error: ${res.status}`);
+    const errRes = await sportApiUpstreamErrorResponse(res, { incidents: [] });
+    if (errRes) {
+      console.error(`[LiveScore API] incidents/${eventId}: SportAPI error: ${res.status}`);
+      return errRes;
+    }
 
     const data = await res.json();
 
@@ -27,10 +25,10 @@ export async function GET(request, { params }) {
       success:   true,
       incidents: data.incidents || [],
     });
-
   } catch (error) {
+    console.error('[LiveScore API] incidents:', error?.message);
     return NextResponse.json(
-      { success: false, incidents: [] },
+      { success: false, error: error.message, incidents: [] },
       { status: 500 }
     );
   }

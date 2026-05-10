@@ -7,18 +7,57 @@ import newsData   from '@/data/news.json';
 import NewsCard   from '@/components/NewsCard';
 import Badge      from '@/components/Badge';
 import { toSlug } from '@/utils/slugUtils';
+import { buildTwitterMeta, SEO_CONFIG } from '@/lib/seo';
+
+export async function generateMetadata({ params }) {
+  const { slug }   = await params;
+  const article    = newsData.find((n) => toSlug(n.title) === slug);
+  if (!article) return { title: 'Article Not Found' };
+
+  return {
+    title:       `${article.title} | All Sports World`,
+    description: article.excerpt,
+    keywords: [
+      article.category,
+      'World Cup 2026',
+      'FIFA 2026',
+      article.tag,
+      'football news',
+    ],
+    authors:   [{ name: article.author }],
+    publishedTime: new Date(article.date).toISOString(),
+    alternates: {
+      canonical: `${SEO_CONFIG.siteUrl}/news/${slug}`,
+    },
+    openGraph: {
+      type:            'article',
+      url:             `${SEO_CONFIG.siteUrl}/news/${slug}`,
+      title:           article.title,
+      description:     article.excerpt,
+      siteName:        'All Sports World',
+      publishedTime:   new Date(article.date).toISOString(),
+      authors:         [article.author],
+      tags:            [article.category, 'World Cup 2026', 'FIFA'],
+      images: [
+        {
+          url:    article.image,
+          width:  800,
+          height: 450,
+          alt:    article.title,
+        },
+      ],
+    },
+    twitter: buildTwitterMeta({
+      title:       article.title,
+      description: article.excerpt,
+      image:       article.image,
+    }),
+  };
+}
+
 
 export async function generateStaticParams() {
   return newsData.map((article) => ({ slug: toSlug(article.title) }));
-}
-
-export async function generateMetadata({ params }) {
-  const article = newsData.find((n) => toSlug(n.title) === params.slug);
-  if (!article) return {};
-  return {
-    title:       `${article.title} — All Sports World`,
-    description: article.excerpt,
-  };
 }
 
 // Dummy article body paragraphs

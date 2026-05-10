@@ -8,23 +8,47 @@ import matchesData from '@/data/matches.json';
 import MatchCard   from '@/components/MatchCard';
 import Badge       from '@/components/Badge';
 import { toSlug }  from '@/utils/slugUtils';
+import { buildOGMeta, buildTwitterMeta, SEO_CONFIG } from '@/lib/seo';
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const team     = teamsData.find((t) => toSlug(t.name) === slug);
+  if (!team) return { title: 'Team Not Found' };
+
+  const title       = `${team.name} — FIFA World Cup 2026 Squad & Schedule`;
+  const description = `${team.name} at FIFA World Cup 2026. Coach: ${team.coach}. FIFA Ranking: #${team.ranking}. Group ${team.group}. ${team.bio}`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      `${team.name} World Cup 2026`,
+      `${team.name} squad 2026`,
+      `${team.name} World Cup schedule`,
+      `${team.name} FIFA ranking`,
+      `${team.name} coach 2026`,
+      `Group ${team.group} World Cup 2026`,
+    ],
+    alternates: {
+      canonical: `${SEO_CONFIG.siteUrl}/teams/${slug}`,
+    },
+    openGraph: buildOGMeta({
+      title,
+      description,
+      image: team.flag,
+      path:  `/teams/${slug}`,
+      type:  'profile',
+    }),
+    twitter: buildTwitterMeta({ title, description }),
+  };
+}
+
 
 // ✅ Static params generate করো
 export async function generateStaticParams() {
   return teamsData.map((team) => ({
     slug: toSlug(team.name),
   }));
-}
-
-// ✅ Page metadata
-export async function generateMetadata({ params }) {
-  const { slug } = await params; // ✅ Next.js 15: await params
-  const team = teamsData.find((t) => toSlug(t.name) === slug);
-  if (!team) return { title: 'Team Not Found' };
-  return {
-    title:       `${team.name} — All Sports World`,
-    description: team.bio,
-  };
 }
 
 // ✅ Main page — async + await params

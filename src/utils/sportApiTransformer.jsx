@@ -16,6 +16,18 @@ const STATUS_MAP = {
     awarded:     'finished',
     delayed:     'upcoming',
   };
+
+  /** SofaScore sometimes sends `not_started` / different casing — normalize before lookup. */
+  const STATUS_LOOKUP = {};
+  for (const [key, val] of Object.entries(STATUS_MAP)) {
+    STATUS_LOOKUP[String(key).replace(/_/g, '').toLowerCase()] = val;
+  }
+
+  function resolveStatusType(type) {
+    if (type == null || type === '') return 'upcoming';
+    const norm = String(type).replace(/_/g, '').toLowerCase();
+    return STATUS_LOOKUP[norm] || 'upcoming';
+  }
   
   // Sport display names
   const SPORT_LABELS = {
@@ -48,7 +60,7 @@ const STATUS_MAP = {
   
   // ── Football match transform ───────────────────
   export function transformFootballEvent(event) {
-    const status = STATUS_MAP[event.status?.type] || 'upcoming';
+    const status = resolveStatusType(event.status?.type);
     const isLive = status === 'live';
   
     // Live match minute calculate
@@ -111,7 +123,7 @@ const STATUS_MAP = {
   
   // ── Basketball match transform ─────────────────
   export function transformBasketballEvent(event) {
-    const status = STATUS_MAP[event.status?.type] || 'upcoming';
+    const status = resolveStatusType(event.status?.type);
     const isLive = status === 'live';
   
     // Period display
@@ -164,7 +176,7 @@ const STATUS_MAP = {
   
   // ── Tennis match transform ─────────────────────
   export function transformTennisEvent(event) {
-    const status = STATUS_MAP[event.status?.type] || 'upcoming';
+    const status = resolveStatusType(event.status?.type);
   
     // Score format: "6-4, 3-6, *5-3"
     const homeScore = formatTennisScore(event.homeScore);
@@ -219,7 +231,7 @@ const STATUS_MAP = {
   
   // ── Cricket match transform ────────────────────
   export function transformCricketEvent(event) {
-    const status = STATUS_MAP[event.status?.type] || 'upcoming';
+    const status = resolveStatusType(event.status?.type);
   
     return {
       id:          event.id,
@@ -259,7 +271,7 @@ const STATUS_MAP = {
   
   // ── Ice Hockey transform ───────────────────────
   export function transformIceHockeyEvent(event) {
-    const status = STATUS_MAP[event.status?.type] || 'upcoming';
+    const status = resolveStatusType(event.status?.type);
   
     const periodMap = {
       '1st period': 'P1',

@@ -2,7 +2,7 @@
 import { useCountdown } from '@/hooks/useCountdown';
 
 export default function CountdownTimer({ targetDate, size = 'md', variant = 'default' }) {
-  const { days, hours, minutes, seconds, isOver } = useCountdown(targetDate);
+  const { ready, days, hours, minutes, seconds, isOver } = useCountdown(targetDate);
 
   if (isOver) return (
     <span className="text-accentGreen font-bold text-sm animate-pulse">LIVE NOW</span>
@@ -31,11 +31,12 @@ export default function CountdownTimer({ targetDate, size = 'md', variant = 'def
     ? 'bg-white/10 border border-white/20'
     : 'bg-bgCard border border-white/10';
 
+  const pad = (n) => String(n).padStart(2, '0');
   const units = [
-    { value: String(days).padStart(2, '0'),    label: 'DAYS' },
-    { value: String(hours).padStart(2, '0'),   label: 'HRS'  },
-    { value: String(minutes).padStart(2, '0'), label: 'MIN'  },
-    { value: String(seconds).padStart(2, '0'), label: 'SEC'  },
+    { value: ready ? pad(days) : '--',    label: 'DAYS' },
+    { value: ready ? pad(hours) : '--',   label: 'HRS'  },
+    { value: ready ? pad(minutes) : '--', label: 'MIN'  },
+    { value: ready ? pad(seconds) : '--', label: 'SEC'  },
   ];
 
   const colonClass = s.colon ?? 'text-lg';

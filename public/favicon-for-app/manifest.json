@@ -1,0 +1,29 @@
+{
+  "name": "All Sports World",
+  "short_name": "AllSports",
+  "description": "FIFA World Cup 2026 & Live Scores for 20+ Sports",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07111F",
+  "theme_color": "#07111F",
+  "icons": [
+    {
+      "src": "/favicon-for-app/icon1.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-for-public/web-app-manifest-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/favicon-for-public/web-app-manifest-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

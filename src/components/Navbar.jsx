@@ -9,7 +9,6 @@ import { useTheme } from 'next-themes';
 
 const NAV_LINKS = [
   { href: '/',            label: 'Home'        },
-  { href: '/livescore',   label: 'Live Score'   },
   { href: '/schedule',    label: 'Schedule'    },
   { href: '/teams',       label: 'Teams'       },
   { href: '/stadiums',    label: 'Stadiums'    },

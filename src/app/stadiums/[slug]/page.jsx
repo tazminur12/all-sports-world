@@ -9,23 +9,46 @@ import MatchCard    from '@/components/MatchCard';
 import Badge        from '@/components/Badge';
 import { toSlug }   from '@/utils/slugUtils';
 import { formatCapacity } from '@/utils/formatUtils';
+import { buildOGMeta, buildTwitterMeta, SEO_CONFIG } from '@/lib/seo';
+
+export async function generateMetadata({ params }) {
+  const { slug }   = await params;
+  const stadium    = stadiumsData.find((s) => toSlug(s.name) === slug);
+  if (!stadium) return { title: 'Stadium Not Found' };
+
+  const title       = `${stadium.name} — FIFA World Cup 2026 Venue | ${stadium.city}`;
+  const description = `${stadium.name} in ${stadium.city}, ${stadium.country}. Capacity: ${stadium.capacity.toLocaleString()} seats. Hosting ${stadium.matches} World Cup 2026 matches. ${stadium.highlight}.`;
+
+  return {
+    title,
+    description,
+    keywords: [
+      `${stadium.name} World Cup 2026`,
+      `${stadium.name} capacity`,
+      `World Cup 2026 ${stadium.city}`,
+      `${stadium.city} FIFA World Cup`,
+      `${stadium.country} World Cup venue 2026`,
+      stadium.highlight,
+    ],
+    alternates: {
+      canonical: `${SEO_CONFIG.siteUrl}/stadiums/${slug}`,
+    },
+    openGraph: buildOGMeta({
+      title,
+      description,
+      image: stadium.image,
+      path:  `/stadiums/${slug}`,
+    }),
+    twitter: buildTwitterMeta({ title, description }),
+  };
+}
+
 
 // ✅ Static params
 export async function generateStaticParams() {
   return stadiumsData.map((s) => ({
     slug: toSlug(s.name),
   }));
-}
-
-// ✅ Metadata
-export async function generateMetadata({ params }) {
-  const { slug } = await params; // ✅ Next.js 15
-  const stadium = stadiumsData.find((s) => toSlug(s.name) === slug);
-  if (!stadium) return { title: 'Stadium Not Found' };
-  return {
-    title:       `${stadium.name} — All Sports World`,
-    description: `${stadium.name} in ${stadium.city}, ${stadium.country}. Capacity: ${formatCapacity(stadium.capacity)}.`,
-  };
 }
 
 // ✅ Main Page — async + await params
